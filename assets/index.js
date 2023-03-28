@@ -32,13 +32,13 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'contributing',
-        message: 'Please enter the contribution guidelines:',
+        name: 'contributors',
+        message: 'Please list any contributors (GitHub usernames):',
     },
     {
         type: 'input',
         name: 'tests',
-        message: 'Please enter test instructions:',
+        message: 'Provide a walkthrough of required tests:',
     },
     {
         type: 'input',
@@ -53,10 +53,19 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, (err)=>
+    err ? console.error(err) : console.log('README generated!')
+    );
+}
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    inquirer.prompt(questions).then((responses) => {
+        const markdown = generateMarkdown(responses);
+        writeToFile('README.md', markdown);
+    });
+}
 
 // Function call to initialize app
 init();
