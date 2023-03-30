@@ -26,9 +26,10 @@ const questions = [
         message: 'Please enter the usage information:',
     },
     {
-        type: 'input',
+        type: 'list',
         name: 'license',
-        message: 'Please choose a lincense:',
+        message: 'Please choose a license:',
+        choices: ['MIT', 'Apache 2.0', 'GPLv3', 'ISC'],
     },
     {
         type: 'input',
